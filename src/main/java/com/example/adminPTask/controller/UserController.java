@@ -18,6 +18,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
     public String userList(Model model) {
         model.addAttribute("users", userService.findAll());
@@ -41,13 +42,13 @@ public class UserController {
             @RequestParam Map<String, String> form,
             @RequestParam("userId") UserAccount user
     ) {
-        userService.saveUser(user,username, form);
+        userService.saveUser(user, username, form);
 
         return "redirect:/user";
     }
 
     @GetMapping("profile")
-    public String getProfile(Model model, @AuthenticationPrincipal UserAccount user){
+    public String getProfile(Model model, @AuthenticationPrincipal UserAccount user) {
         model.addAttribute("username", user.getUsername());
 
         return "profile";
@@ -58,7 +59,7 @@ public class UserController {
             @AuthenticationPrincipal UserAccount user,
             @RequestParam String password,
             @RequestParam String username
-    ){
+    ) {
         userService.updateProfile(user, username, password);
 
         return "redirect:/user/profile";

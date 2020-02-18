@@ -6,11 +6,7 @@
             <input type="text" name="username" value="<#if user??>${user.username}</#if>"
                    class="form-control ${(usernameError??)?string('is-invalid', '')}"
                    placeholder="User name" />
-            <#if usernameError??>
-            <div class="invalid-feedback">
-                ${usernameError}
-            </div>
-        </#if>
+
     </div>
     </div>
     <div class="form-group row">

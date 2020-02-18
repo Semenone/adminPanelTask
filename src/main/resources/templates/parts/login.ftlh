@@ -6,11 +6,7 @@
             <input type="text" name="username" value="<#if user??>${user.username}</#if>"
                    class="form-control ${(usernameError??)?string('is-invalid', '')}"
                    placeholder="User name" />
-            <#if usernameError??>
-            <div class="invalid-feedback">
-                ${usernameError}
-            </div>
-        </#if>
+
     </div>
     </div>
     <div class="form-group row">
@@ -28,7 +24,7 @@
     </div>
     <#if isRegisterForm>
     <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Password2:</label>
+        <label class="col-sm-2 col-form-label">Password:</label>
         <div class="col-sm-6">
             <input type="password" name="password2"
                    class="form-control ${(password2Error??)?string('is-invalid', '')}"
